@@ -89,20 +89,6 @@ This can't be trivially fixed, since the compiler can't decipher the bounds chec
 >         .asciz  "\017\000\000\000\000\000\000\000u\000\000\000&\000\000"
 ```
 
-**try_add_digit**
-
-This actually produces better ASM, since it removes 2 `mov` instructions and makes the add conditional, without any side-effects.
-
-```diff
-6c6
-<         mov     rax, qword ptr [rdi]
----
->         add     qword ptr [rdi], 1
-8,9d7
-<         add     rax, 1
-<         mov     qword ptr [rdi], rax
-```
-
 # Summary
 
 Safety go brrr.
